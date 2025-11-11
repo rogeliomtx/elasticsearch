@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Exit the script as soon as any command fails
 set -euo pipefail
