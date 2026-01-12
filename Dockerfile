@@ -17,7 +17,7 @@ COPY --chmod=755 entrypoint-new.sh /usr/local/bin/entrypoint-new.sh
 USER 0
 
 # Install sudo and allow the elasticsearch user to run chown as root
-RUN dnf update -y && dnf install -y sudo && dnf clean all && \
+RUN microdnf update -y && microdnf install -y sudo && microdnf clean all && \
     echo "elasticsearch ALL=(root) NOPASSWD: /bin/chown" > /etc/sudoers.d/elasticsearch
 
 # Switch back to the elasticsearch user as elasticsearch can only run as non-root
