@@ -1,5 +1,5 @@
 # Default Elasticsearch version to use
-ARG ELASTICSEARCH_VERSION=8.19.6
+ARG ELASTICSEARCH_VERSION=9.2.3
 
 # Use the Elasticsearch image with the specified version
 FROM elasticsearch:${ELASTICSEARCH_VERSION}
@@ -17,7 +17,7 @@ COPY --chmod=755 entrypoint-new.sh /usr/local/bin/entrypoint-new.sh
 USER 0
 
 # Install sudo and allow the elasticsearch user to run chown as root
-RUN apt-get update && apt-get install -y sudo && \
+RUN dnf update -y && dnf install -y sudo && dnf clean all && \
     echo "elasticsearch ALL=(root) NOPASSWD: /bin/chown" > /etc/sudoers.d/elasticsearch
 
 # Switch back to the elasticsearch user as elasticsearch can only run as non-root
